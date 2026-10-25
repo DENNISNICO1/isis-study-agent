@@ -1,0 +1,10 @@
+---
+description: ARCHITECTURE.md als lebendes Dokument pflegen
+alwaysApply: true
+---
+
+- `ARCHITECTURE.md` zeigt Modulabhängigkeiten, Datenflüsse und Service-Interaktionen als Mermaid-Diagramme.
+- **Update-Trigger:** neues Modul, neue Integration, geänderter Datenfluss, Modul entfernt/umbenannt.
+- **Keine Trigger:** Bugfixes ohne Strukturänderung, neue Tests, Helfer innerhalb eines Moduls.
+- **Stil:** Modulebene, max. 12–15 Knoten je Diagramm, beschreibende Kantenlabels, kein `\n` in Knotenlabels.
+- **HARD GATE:** Ein Task darf nicht "done" sein, wenn Strukturänderungen eingeführt wurden und `ARCHITECTURE.md` nicht aktualisiert ist.

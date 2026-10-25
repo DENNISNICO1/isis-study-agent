@@ -1,0 +1,25 @@
+[
+  {
+    "id": 1, "name": "Allgemeines", "summary": "<p>Willkommen zur <b>Psychoakustik</b>!</p>",
+    "modules": [
+      {"id": 10, "name": "Ankündigungen", "modname": "forum", "uservisible": true},
+      {"id": 11, "name": "Kurswebseite", "modname": "url", "uservisible": true,
+       "contents": [{"type": "url", "filename": "Kurswebseite", "fileurl": "https://www.ak.tu-berlin.de/"}]}
+    ]
+  },
+  {
+    "id": 2, "name": "Woche 1: Hörschwelle", "summary": "",
+    "modules": [
+      {"id": 20, "name": "VL01 Folien", "modname": "resource", "uservisible": true,
+       "description": "<p>Folien zur ersten Vorlesung</p>",
+       "contents": [{"type": "file", "filename": "VL01_Hörschwelle.pdf", "filepath": "/", "filesize": 1000,
+                     "timemodified": 1760000000,
+                     "fileurl": "https://isis.tu-berlin.de/webservice/pluginfile.php/1/mod_resource/content/1/VL01.pdf?forcedownload=1"}]},
+      {"id": 21, "name": "Übungsmaterial", "modname": "folder", "uservisible": true,
+       "contents": [{"type": "file", "filename": "../../boese.txt", "filepath": "/Unter/../ordner/", "filesize": 5,
+                     "timemodified": 1760000001,
+                     "fileurl": "https://isis.tu-berlin.de/webservice/pluginfile.php/1/mod_folder/content/0/boese.txt"}]},
+      {"id": 22, "name": "Versteckt", "modname": "resource", "uservisible": false, "contents": []}
+    ]
+  }
+]

@@ -1,0 +1,36 @@
+---
+description: Regeln für das Python-Paket isis_agent und seine Tests
+globs:
+  - "src/**"
+  - "tests/**"
+  - "tools/**"
+alwaysApply: false
+---
+
+## Verified Patterns (sourced: model knowledge, 2026-10-24)
+- Pattern: POST form-encoded an `/webservice/rest/server.php` mit `wstoken`, `wsfunction`, `moodlewsrestformat=json`; Array-Parameter als `courseids[0]=…`
+  Source: Moodle Web Services REST protocol (model knowledge)
+  Applied in: Moodle-Client
+
+## Moodle-Client
+- Nur `MoodleClient.call(wsfunction, **params)` spricht mit ISIS; prüft Allowlist → `PermissionError`.
+- `exception` in der Antwort → `MoodleError(errorcode, message)`; `invalidtoken` → Hinweis auf `docs/ISIS_TOKEN.md`.
+- Downloads via `client.download(fileurl, ziel)`: Token als Parameter anhängen, gestreamt, atomar (temp + `os.replace`).
+- Retries (max. 3, Backoff) nur bei Netzwerkfehlern/5xx.
+
+## Sync & Zustand
+- Inkrementell über (`fileurl`, `timemodified`, `filesize`). Manifest atomar schreiben.
+- Geänderte Dateien überschreiben, aber im Digest als „geändert“ markieren.
+
+## Fehler & Logging
+- `logging.getLogger(__name__)`; keine Token/Token-URLs in Logs (`mask_token`).
+- CLI fängt bekannte Fehler und gibt eine verständliche deutsche Meldung + Exit-Code ≠ 0.
+
+## Tests
+- Jede Funktion mit Logik bekommt Tests; Netzwerk nur über `httpx.MockTransport`; Dateisystem über `tmp_path`.
+- Fixtures im echten Moodle-Format unter `tests/fixtures/`.
+
+## Häufige Fehler
+- Moodle-Fehler übersehen, weil HTTP 200 → immer `exception` prüfen.
+- `timemodified` fehlt bei manchen Modulen → Fallback auf `filesize` + URL.
+- Umlaute in Pfaden: immer `encoding="utf-8"`, Slugs ASCII.

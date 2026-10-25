@@ -1,0 +1,4 @@
+[
+  {"id": 100, "course": 4711, "type": "news", "name": "Ankündigungen"},
+  {"id": 101, "course": 4711, "type": "general", "name": "Fragen zur Vorlesung"}
+]

@@ -1,0 +1,28 @@
+# BEISPIEL – mit `isis-agent init` eine eigene config/kurse.toml erzeugen (IDs hier sind ausgedacht).
+# Kursauswahl für den ISIS-Sync. Kurs-IDs listet `isis-agent kurse`.
+# slug: ASCII-Kurzname für Ordner (kurse/<slug>/), name: Anzeigename, suche: Namensteil
+
+[isis]
+base_url = "https://isis.tu-berlin.de"
+
+[[kurs]]
+slug = "stroemungsakustik"
+name = "Strömungsakustik"
+id = 12345
+suche = "Strömungsakustik"
+
+[[kurs]]
+slug = "psychoakustik"
+name = "Psychoakustik"
+id = 67890
+suche = "Psychoakustik"
+
+# Lernpodcast (isis-agent audio | feed | publish), siehe docs/PODCAST.md.
+# Der geheime Pfad steht NICHT hier, sondern als PODCAST_SECRET in .env.
+[podcast]
+# autor = "Dein Name"
+backend = "edge"  # edge (Neural-Stimmen, online) | say (macOS, offline)
+stimme = "de-DE-ConradNeural"  # oder de-DE-KatjaNeural / -AmalaNeural / -KillianNeural
+tempo = "+0%"  # z. B. "+10%"; die Podcast-App kann zusätzlich beschleunigen
+site_url = ""  # nach dem ersten `isis-agent publish` eintragen
+cloudflare_projekt = "isis-lernpodcast"
