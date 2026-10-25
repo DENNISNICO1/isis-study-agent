@@ -65,7 +65,7 @@ _Always in effect._
 - **Update-Trigger:** neues Modul, neue Integration, geänderter Datenfluss, Modul entfernt/umbenannt.
 - **Keine Trigger:** Bugfixes ohne Strukturänderung, neue Tests, Helfer innerhalb eines Moduls.
 - **Stil:** Modulebene, max. 12–15 Knoten je Diagramm, beschreibende Kantenlabels, kein `\n` in Knotenlabels.
-- **HARD GATE:** Ein Task darf nicht "done" sein, wenn Strukturänderungen eingeführt wurden und `ARCHITECTURE.md` nicht aktualisiert ist.
+- **HARD GATE:** Keine Strukturänderung (auch in PRs) ohne aktuelles `ARCHITECTURE.md`.
 
 ## Python Package Rules
 _Applies to: src/**, tests/**, tools/**._
